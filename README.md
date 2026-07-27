@@ -1,8 +1,8 @@
-## Pesquisa-e-Ordenacao
+# Pesquisa-e-Ordenacao
 Eduardo Butzen - Ciência da Computação - UFN
 
 
-# Estrtura da diciplina:
+## Estrtura da diciplina:
 
 - Algorítimos (14)
 - Estrturas
