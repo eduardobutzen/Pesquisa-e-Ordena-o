@@ -6,6 +6,12 @@
 - Estrturas
 - Otimização
 
+- Notas:
+    - Participação Efetiva : 20%
+    - Desafios/trabalhos + Prova:  60%
+    - Github (Notas e Códigos):  20%
+
+
 
 # Protocolo SOAP Definição: 
 
