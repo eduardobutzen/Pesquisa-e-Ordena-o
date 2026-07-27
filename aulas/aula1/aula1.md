@@ -1,4 +1,6 @@
-## Pesquisa e Ordenação (Continuação da Estrutura de dados)
+### Pesquisa e Ordenação (Continuação da Estrutura de dados)
+
+## 27/07/2026
 
 # Estrtura da diciplina:
 
@@ -11,6 +13,27 @@
     - Desafios/trabalhos + Prova:  60%
     - Github (Notas e Códigos):  20%
 
+# Ordenar
+- Sort
+    - Seleção
+    - Bolha
+    - Inserção
+  
+    - Outros:
+        - Agitação
+        - Pente
+        - Shell
+        - reix
+        - bucket
+        - Merge - Complexos, mas baixa complexidade
+        - Quick
+        - HEAP - Árvore
+          
+      
+# Complexidade de um algorítimo:
+
+- Esforço computacional alto: Alta complexidade
+      - Pode existir algorítimos simples com alta complexidade (horrível).
 
 
 # Protocolo SOAP Definição: 
