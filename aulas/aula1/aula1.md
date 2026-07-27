@@ -1,8 +1,8 @@
-### Pesquisa e Ordenação (Continuação da Estrutura de dados)
+# Pesquisa e Ordenação (Continuação da Estrutura de dados)
 
 ## 27/07/2026
 
-# Estrtura da diciplina:
+### Estrtura da diciplina:
 
 - Algorítimos (14)
 - Estrturas
@@ -13,7 +13,7 @@
     - Desafios/trabalhos + Prova:  60%
     - Github (Notas e Códigos):  20%
 
-# Ordenar
+### Ordenar
 - Sort
     - Seleção
     - Bolha
@@ -30,18 +30,18 @@
         - HEAP - Árvore
           
       
-# Complexidade de um algorítimo:
+### Complexidade de um algorítimo:
 
 - Esforço computacional alto: Alta complexidade
       - Pode existir algorítimos simples com alta complexidade (horrível).
 
 
-# Protocolo SOAP Definição: 
+### Protocolo SOAP Definição: 
 
 - Protocolo de mensagens baseado em XML para troca de dados entre sistemas. 
 - Uso: Integração de softwares e APIs empresariais que exigem alta segurança.
 
-# Escalabilidade:
+### Escalabilidade:
 
 - É a habilidade de escalar (hardware)
     - Escalabilidade vertical:
