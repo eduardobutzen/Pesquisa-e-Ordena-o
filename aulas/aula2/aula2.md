@@ -37,11 +37,11 @@
       - __EM PESQUISA:__ Se mede pela __quantidade comparações__.
      
     - Notação Big O:
-      - O(n!) ------------------------------ __Maior complexidade__
-      - O(n^x) 
-      - O(log n + n) 
-      - O(n)
-      - O(log n)----------------------------__Menor complexidade__
+      - FATORIAl: O(n!) ------------------------------ __Maior complexidade__
+      - POLINOMIAL: O(n^x) 
+      - EXPONENCIAL: O(log n + n) 
+      - LINEAR: O(n)
+      - LOGARÍTIMICA: O(log n)----------------------------__Menor complexidade__
      
   ### Estabilidade:
   - Estabilidade é o quanto a estrutura é desordenada até chegar a ordenação (O quanto bagunça).
