@@ -42,25 +42,35 @@ public static void bolhaSimples(int[] vetor) {
     - 1) for
     - 2) for
 ```
-public static void selecaoSimples(int[] vetor) {
-    for (int i = 0; i < vetor.length - 1; i++) {
-        int menor = i;
+public static void selecao(int[] lista) {
+    int posMenor;
+    int qtd_comparacoes = 0;
+    int qtd_trocas = 0;
 
-        for (int j = i + 1; j < vetor.length; j++) {
-            if (vetor[j] < vetor[menor]) {
-                menor = j;
+    for (int i = 0; i < lista.length - 1; i++) {
+        posMenor = i;
+
+        for (int j = i + 1; j < lista.length; j++) {
+            qtd_comparacoes++;
+
+            if (lista[j] < lista[posMenor]) {
+                posMenor = j;
             }
         }
 
-        int temp = vetor[i];
-        vetor[i] = vetor[menor];
-        vetor[menor] = temp;
+        if (i != posMenor) {
+            qtd_trocas++;
+
+            int tmp = lista[i];
+            lista[i] = lista[posMenor];
+            lista[posMenor] = tmp;
+        }
     }
 }
 ```
 
 
-#### Insenção simples:
+#### Inserção simples:
 - Instável.
 - Parte ordenada está no início da lista.
 - A cada valor da porção da direita é inserido na sua posição correta na porção da esquerda.
@@ -70,17 +80,27 @@ public static void selecaoSimples(int[] vetor) {
     - 2) while
 
 ```
-public static void insercaoSimples(int[] vetor) {
-    for (int i = 1; i < vetor.length; i++) {
-        int chave = vetor[i];
-        int j = i - 1;
+public static void insercao(int[] lista) {
+    int i, j;
+    int tmp;
+    int qtdComparacoes = 0, qtdTrocas = 0;
 
-        while (j >= 0 && vetor[j] > chave) {
-            vetor[j + 1] = vetor[j];
-            j--;
+    for (i = 1; i < lista.length; i++) {
+        tmp = lista[i];
+
+        for (j = i - 1; j >= 0; j--) {
+            qtdComparacoes++;
+
+            if (tmp < lista[j]) {
+                lista[j + 1] = lista[j];
+                qtdTrocas++;
+            } else {
+                break;
+            }
         }
 
-        vetor[j + 1] = chave;
+        lista[j + 1] = tmp;
+        qtdTrocas++;
     }
 }
 ```
