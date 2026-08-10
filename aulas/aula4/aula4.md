@@ -106,6 +106,28 @@ public static void insercao(int[] lista) {
 ```
 
 
-#### Teoria do caos:
+### Teoria do caos:
 - " Métodos instáveis constumam ser melhores que estáveis "
 - A teoria do caos é um campo da matemática e da ciência que estuda sistemas dinâmicos regidos por leis determinísticas, mas que são altamente sensíveis a pequenas variações iniciais. Mudanças mínimas no ponto de partida podem gerar resultados imprevisíveis a longo prazo.
+
+### MVC (Model, View, Controller)
+
+- Model
+    - Utilidade
+        - popularLista
+
+- View
+    - ListaView
+        - exibirLista
+        - exibitTempo
+
+- Controller
+    - ListaController
+        - listaBolha
+        - listaSelecao
+        - listaInsercao
+
+    - Metodos:
+        - popularLista(listaBolha)
+        - popularLista(listaSelecao)
+        - popularLista(ListaInsercao)
