@@ -30,3 +30,5 @@
 
     - O método de agitação dilui o problema dos elementos tartaruga, fazendo uma pré-ordenação.
     - O método pente aplica o "olhar a distância" diminuindo as comparações finais.
+
+    
