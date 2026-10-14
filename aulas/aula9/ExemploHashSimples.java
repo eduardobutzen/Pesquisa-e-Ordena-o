@@ -1,3 +1,5 @@
+package aulas.aula9;
+
 import java.util.HashSet;
 
 public class ExemploHashSimples {
@@ -19,7 +21,9 @@ public class ExemploHashSimples {
 
         }
 
-        System.out.println(tableHashString.contains("alan"));   
+        System.out.println(tableHashString.contains("alan") + " -> " + "alan".hashCode()); 
+
+
     }
 
 }
