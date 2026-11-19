@@ -4,16 +4,12 @@ class TerminalView:
     def mostrar_menu(self):
         print("\n===== SESSOES DE TELEFONIA =====")
         print("1 - Buscar um celular")
-        print("2 - Buscar varios celulares (threads)")
-        print("3 - Mostrar total de sessoes")
+        print("2 - Mostrar total de sessoes")
         print("0 - Sair")
         return input("Opcao: ").strip()
 
     def pedir_celular(self):
         return input("Digite o celular: ").strip()
-
-    def pedir_varios_celulares(self):
-        return input("Digite os celulares separados por espaco: ").split()
 
     def mostrar_sessao(self, sessao):
         print(f"\n--- Celular {sessao.celular} ---")
@@ -30,16 +26,6 @@ class TerminalView:
 
     def mostrar_nao_encontrado(self, celular):
         print(f"\nCelular {celular} nao encontrado.")
-
-    def mostrar_resultado_thread(self, celular, sessao, nome_thread):
-        print(f"\n[{nome_thread}] buscou {celular}")
-        if sessao:
-            self.mostrar_sessao(sessao)
-        else:
-            self.mostrar_nao_encontrado(celular)
-
-    def mostrar_tempo(self, quantidade, segundos):
-        print(f"\n{quantidade} buscas feitas em {segundos * 1000:.3f} ms")
 
     def mostrar_mensagem(self, mensagem):
         print(mensagem)
