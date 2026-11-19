@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BuscaKMP {
 
-    // Procura o padrão no texto
     public List<Ocorrencia> procurar(String texto, String padrao, boolean diferenciarMaiusculas) {
         List<Ocorrencia> encontradas = new ArrayList<>();
         if (texto == null || padrao == null || padrao.isEmpty() || padrao.length() > texto.length()) {
@@ -26,7 +25,6 @@ public class BuscaKMP {
             if (t[i] == p[casados]) {
                 casados++;
             }
-            // Achou uma ocorrência
             if (casados == p.length) {
                 encontradas.add(new Ocorrencia(i - p.length + 1, i + 1));
                 casados = falha[casados - 1];
@@ -35,7 +33,6 @@ public class BuscaKMP {
         return encontradas;
     }
 
-    // Monta a tabela de falha
     public static int[] tabelaDeFalha(char[] padrao) {
         int[] falha = new int[padrao.length];
         int k = 0;
@@ -51,7 +48,6 @@ public class BuscaKMP {
         return falha;
     }
 
-    // Deixa tudo minúsculo, se precisar
     private char[] preparar(String s, boolean diferenciarMaiusculas) {
         char[] c = s.toCharArray();
         if (!diferenciarMaiusculas) {

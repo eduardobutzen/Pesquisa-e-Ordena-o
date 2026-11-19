@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-// Gera o relatorio.txt
 public class Relatorio {
 
     public static final long DOIS_MINUTOS = 120_000_000_000L;

@@ -10,10 +10,8 @@ import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
-// Testes da ordenação
 class OrdenadorTest {
 
-    // Compara com o sort do Java
     @Test
     void insertionEMergeOrdenamIgualAoJava() {
         List<Comparator<Produto>> criterios = List.of(Ordenador.POR_NOME, Ordenador.POR_PRECO, Ordenador.POR_ID);

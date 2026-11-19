@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-// Lê e salva os arquivos
 public class GerenciadorArquivos {
 
     public static ArrayList<Produto> ler(String arquivo) throws IOException {

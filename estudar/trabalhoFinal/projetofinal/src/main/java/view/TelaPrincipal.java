@@ -2,7 +2,6 @@ package view;
 
 import controller.ControladorProdutos;
 
-// Tela do programa
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private ControladorProdutos controlador;
@@ -144,7 +143,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // Eventos dos componentes
     private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
         controlador.carregar();
     }//GEN-LAST:event_btnCarregarActionPerformed
@@ -169,7 +167,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.controlador = controlador;
     }
 
-    // Getters
     public javax.swing.JComboBox<String> getCbArquivo() {
         return cbArquivo;
     }

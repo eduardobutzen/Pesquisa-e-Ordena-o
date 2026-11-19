@@ -15,7 +15,6 @@ import model.Produto;
 import model.Relatorio;
 import view.TelaPrincipal;
 
-// Liga a tela aos algoritmos
 public class ControladorProdutos {
 
     private final TelaPrincipal tela;
@@ -31,7 +30,6 @@ public class ControladorProdutos {
         tela.setControlador(this);
     }
 
-    // Chamados pela tela
     public void carregar() {
         executar(() -> carregar((String) tela.getCbArquivo().getSelectedItem()));
     }
@@ -56,7 +54,6 @@ public class ControladorProdutos {
         });
     }
 
-    // Executa e mostra o resultado
     private void executar(Operacao operacao) {
         try {
             String mensagem = operacao.rodar();
@@ -87,7 +84,6 @@ public class ControladorProdutos {
         return produtos.size() + " produtos exportados para " + arquivo;
     }
 
-    // Ordena e mede o tempo
     private String ordenar(String campo, String algoritmo) {
         Comparator<Produto> comparador = switch (campo) {
             case "Nome" -> Ordenador.POR_NOME;

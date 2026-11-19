@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-// Testes dos arquivos
 class GerenciadorArquivosTest {
 
     @Test
@@ -16,7 +15,6 @@ class GerenciadorArquivosTest {
         assertEquals(1000, GerenciadorArquivos.ler("produtos_1000.txt").size());
     }
 
-    // Salvar e ler deve dar o mesmo resultado
     @Test
     void salvarELerDeNovoDaOMesmoResultado(@TempDir Path pasta) throws Exception {
         ArrayList<Produto> original = GerenciadorArquivos.ler("produtos_1000.txt");

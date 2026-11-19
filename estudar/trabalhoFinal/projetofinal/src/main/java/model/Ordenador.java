@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-// Algoritmos de ordenação
 public class Ordenador {
 
     public static final Comparator<Produto> POR_NOME = (a, b) -> a.getNome().compareToIgnoreCase(b.getNome());
     public static final Comparator<Produto> POR_PRECO = (a, b) -> Double.compare(a.getPreco(), b.getPreco());
     public static final Comparator<Produto> POR_ID = (a, b) -> Integer.compare(a.getId(), b.getId());
 
-    // Insertion Sort: para se passar do limite
     public static boolean insertionSort(List<Produto> v, Comparator<Produto> c, long limiteNanos) {
         long inicio = System.nanoTime();
         for (int i = 1; i < v.size(); i++) {
@@ -30,7 +28,6 @@ public class Ordenador {
         return true;
     }
 
-    // Merge Sort: divide ao meio e junta em ordem
     public static void mergeSort(List<Produto> v, Comparator<Produto> c) {
         if (v.size() < 2) {
             return;

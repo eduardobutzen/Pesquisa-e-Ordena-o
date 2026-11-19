@@ -4,7 +4,6 @@ import model.Produto;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-// Colunas da tabela
 public class ProdutoTableModel extends AbstractTableModel {
     private static final long serialVersionUID = 1L;
     private static final String[] COLUNAS = {"Id", "Nome", "Categoria", "Preço (R$)", "Estoque"};

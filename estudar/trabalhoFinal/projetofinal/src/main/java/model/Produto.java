@@ -2,7 +2,6 @@ package model;
 
 import java.util.Locale;
 
-// Dados de um produto
 public class Produto {
     private final int id;
     private final String nome;
@@ -38,7 +37,6 @@ public class Produto {
         return estoque;
     }
 
-    // Linha no formato do arquivo
     public String toLinha() {
         return String.format(Locale.US, "%d;%s;%s;%.2f;%d", id, nome, categoria, preco, estoque);
     }

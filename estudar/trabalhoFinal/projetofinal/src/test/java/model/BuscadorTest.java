@@ -9,10 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-// Testes das buscas
 class BuscadorTest {
 
-    // As três buscas devem dar o mesmo resultado
     @Test
     void asTresBuscasConcordam() {
         List<Produto> lista = new ArrayList<>();

@@ -5,7 +5,6 @@ import javax.swing.SwingUtilities;
 import model.BuscaKMP;
 import view.TelaBusca;
 
-// Inicia o programa
 public class App {
 
     private static final String TEXTO_EXEMPLO =

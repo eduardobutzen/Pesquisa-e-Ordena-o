@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
-// Testes da busca KMP
 class BuscaKMPTest {
 
     private final BuscaKMP busca = new BuscaKMP();
@@ -39,7 +38,6 @@ class BuscaKMPTest {
         assertTrue(busca.procurar(null, "a", false).isEmpty());
     }
 
-    // Compara com a força bruta
     @Test
     void mesmoResultadoQueForcaBruta() {
         Random sorteio = new Random(42);
@@ -59,7 +57,6 @@ class BuscaKMPTest {
         return sb.toString();
     }
 
-    // Força bruta
     private static List<Ocorrencia> forcaBruta(String texto, String padrao) {
         List<Ocorrencia> r = new ArrayList<>();
         for (int i = 0; i + padrao.length() <= texto.length(); i++) {

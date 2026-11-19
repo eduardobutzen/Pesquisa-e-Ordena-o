@@ -2,7 +2,6 @@ package view;
 
 import controller.ControladorBusca;
 
-// Tela do programa
 public class TelaBusca extends javax.swing.JFrame {
 
     private ControladorBusca controlador;
@@ -115,7 +114,6 @@ public class TelaBusca extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // Eventos dos componentes
     private void txtBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyReleased
         controlador.termoDigitado();
     }//GEN-LAST:event_txtBuscaKeyReleased
@@ -144,7 +142,6 @@ public class TelaBusca extends javax.swing.JFrame {
         this.controlador = controlador;
     }
 
-    // Getters
     public javax.swing.JTextField getTxtBusca() {
         return txtBusca;
     }

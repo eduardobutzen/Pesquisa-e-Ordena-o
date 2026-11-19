@@ -36,7 +36,6 @@ public class ControladorBusca {
         refazerBusca(false);
     }
 
-    // Chamados pela tela
     public void termoDigitado() {
         if (!tela.getTxtBusca().getText().equals(ultimoTermo)) {
             refazerBusca(true);
