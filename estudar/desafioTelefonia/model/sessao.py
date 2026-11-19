@@ -2,9 +2,9 @@ import json
 from dataclasses import dataclass
 
 
+# Representa uma sessao de telefonia (uma linha do arquivo).
 @dataclass
 class Sessao:
-    """Representa uma sessao de telefonia (uma linha do arquivo)."""
 
     celular: str
     session_id: str
@@ -27,9 +27,9 @@ class Sessao:
     lon: float
     encryption: str
 
+    # Cria uma Sessao a partir de uma linha no formato 'celular;{json}'.
     @staticmethod
     def from_linha(linha):
-        """Cria uma Sessao a partir de uma linha no formato 'celular;{json}'."""
         celular, dados_json = linha.strip().split(";", 1)
         dados = json.loads(dados_json)
         return Sessao(celular=celular, **dados)

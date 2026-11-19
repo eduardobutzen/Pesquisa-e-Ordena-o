@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 import model.BuscaKMP;
 import view.TelaBusca;
 
-// Ponto de entrada: cria a View e o Model e liga os dois pelo Controller (MVC)
+//cria a View e o Model e liga os dois pelo Controller (MVC)
 public class App {
 
     private static final String TEXTO_EXEMPLO =

@@ -1,5 +1,5 @@
+# Liga a View (tela) com o Model (dados): recebe a opcao e decide o que fazer.
 class SessaoController:
-    """Liga a View (tela) com o Model (dados): recebe a opcao e decide o que fazer."""
 
     def __init__(self, repositorio, view):
         self.repositorio = repositorio

@@ -1,5 +1,5 @@
+# Tudo que aparece na tela ou e lido do teclado fica aqui.
 class TerminalView:
-    """Tudo que aparece na tela ou e lido do teclado fica aqui."""
 
     def mostrar_menu(self):
         print("\n===== SESSOES DE TELEFONIA =====")
