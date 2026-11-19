@@ -3,10 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// Busca de texto com o algoritmo KMP (Knuth-Morris-Pratt)
 public class BuscaKMP {
 
-    // Retorna todas as ocorrências do padrão no texto
+    // Procura o padrão no texto
     public List<Ocorrencia> procurar(String texto, String padrao, boolean diferenciarMaiusculas) {
         List<Ocorrencia> encontradas = new ArrayList<>();
         if (texto == null || padrao == null || padrao.isEmpty() || padrao.length() > texto.length()) {
@@ -17,17 +16,17 @@ public class BuscaKMP {
         char[] p = preparar(padrao, diferenciarMaiusculas);
         int[] falha = tabelaDeFalha(p);
 
-        // casados = quantas letras do padrão já batem até a posição i
+        // Quantas letras do padrão já batem
         int casados = 0;
         for (int i = 0; i < t.length; i++) {
-            // Deu diferença: volta só no padrão, pela tabela de falha (o i nunca volta)
+            // Se não bate, volta no padrão usando a tabela
             while (casados > 0 && t[i] != p[casados]) {
                 casados = falha[casados - 1];
             }
             if (t[i] == p[casados]) {
                 casados++;
             }
-            // Achou: continua de falha[] para também pegar ocorrências sobrepostas
+            // Achou uma ocorrência
             if (casados == p.length) {
                 encontradas.add(new Ocorrencia(i - p.length + 1, i + 1));
                 casados = falha[casados - 1];
@@ -36,7 +35,7 @@ public class BuscaKMP {
         return encontradas;
     }
 
-    // falha[i] = tamanho do maior prefixo do padrão que também é sufixo de padrao[0..i]
+    // Monta a tabela de falha
     public static int[] tabelaDeFalha(char[] padrao) {
         int[] falha = new int[padrao.length];
         int k = 0;
@@ -52,7 +51,7 @@ public class BuscaKMP {
         return falha;
     }
 
-    // Minúsculas caractere por caractere para as posições baterem com o texto da tela
+    // Deixa tudo minúsculo, se precisar
     private char[] preparar(String s, boolean diferenciarMaiusculas) {
         char[] c = s.toCharArray();
         if (!diferenciarMaiusculas) {

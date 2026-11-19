@@ -44,7 +44,7 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cbAlgoritimo" max="32767" attributes="0"/>
+                                  <Component id="cbAlgoritmo" max="32767" attributes="0"/>
                                   <Component id="cbTecnica" max="32767" attributes="0"/>
                                   <Component id="cbCampo" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                               </Group>
@@ -63,7 +63,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblTempo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnRelatório" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRelatorio" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbAlgoritimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbAlgoritmo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnOrdenar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -101,7 +101,7 @@
               <Component id="jScrollPane1" pref="380" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnRelatório" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRelatorio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTempo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -164,7 +164,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cbAlgoritimo">
+    <Component class="javax.swing.JComboBox" name="cbAlgoritmo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -231,12 +231,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnRelat&#xf3;rio">
+    <Component class="javax.swing.JButton" name="btnRelatorio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gerar relat&#xf3;rio"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelat&#xf3;rioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelatorioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTempo">

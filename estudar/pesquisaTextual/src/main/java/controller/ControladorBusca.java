@@ -12,7 +12,6 @@ import model.BuscaKMP;
 import model.Ocorrencia;
 import view.TelaBusca;
 
-// Controller (MVC): recebe os eventos da tela e chama a busca KMP
 public class ControladorBusca {
 
     private static final Color COR_OCORRENCIA = new Color(255, 236, 130);
@@ -37,7 +36,7 @@ public class ControladorBusca {
         refazerBusca(false);
     }
 
-    // Chamados pelos eventos da tela. Teclas que não mudam o texto (setas, Enter) são ignoradas
+    // Chamados pela tela
     public void termoDigitado() {
         if (!tela.getTxtBusca().getText().equals(ultimoTermo)) {
             refazerBusca(true);
@@ -71,7 +70,7 @@ public class ControladorBusca {
 
         ocorrencias = buscador.procurar(texto, termo, tela.getChkMaiusculas().isSelected());
 
-        // Termo novo: vai para a 1ª ocorrência. Texto editado: tenta manter a mesma
+        // Escolhe qual ocorrência fica selecionada
         if (ocorrencias.isEmpty()) {
             selecionada = -1;
         } else if (termoMudou || anterior < 0) {
@@ -92,7 +91,7 @@ public class ControladorBusca {
             return;
         }
         int total = ocorrencias.size();
-        // Depois da última volta para a primeira (e vice-versa)
+        // Depois da última volta para a primeira
         selecionada = ((indice % total) + total) % total;
         destacar();
         rolarAte(ocorrencias.get(selecionada));

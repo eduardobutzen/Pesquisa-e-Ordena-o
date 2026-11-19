@@ -1,25 +1,15 @@
-package avaliaçãofinal.view;
+package view;
 
-import avaliaçãofinal.control.Controlador;
-import javax.swing.JOptionPane;
+import controller.ControladorProdutos;
 
-public class View extends javax.swing.JFrame {
+// Tela do programa
+public class TelaPrincipal extends javax.swing.JFrame {
 
-    private final Controlador controlador = new Controlador();
+    private ControladorProdutos controlador;
     private final ProdutoTableModel modelo = new ProdutoTableModel();
 
-    public View() {
+    public TelaPrincipal() {
         initComponents();
-        setLocationRelativeTo(null);
-    }
-
-    private void mostrar(String mensagem) {
-        lblTempo.setText(mensagem);
-        modelo.setProdutos(controlador.getResultado());
-    }
-
-    private void erro(Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
     }
 
     @SuppressWarnings("unchecked")
@@ -32,7 +22,7 @@ public class View extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbCampo = new javax.swing.JComboBox<>();
-        cbAlgoritimo = new javax.swing.JComboBox<>();
+        cbAlgoritmo = new javax.swing.JComboBox<>();
         btnOrdenar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cbTecnica = new javax.swing.JComboBox<>();
@@ -40,7 +30,7 @@ public class View extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        btnRelatório = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
         lblTempo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +50,7 @@ public class View extends javax.swing.JFrame {
 
         cbCampo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Preço", "Id" }));
 
-        cbAlgoritimo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Insertion Sort", "Merge Sort" }));
+        cbAlgoritmo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Insertion Sort", "Merge Sort" }));
 
         btnOrdenar.setText("Ordenar");
         btnOrdenar.addActionListener(this::btnOrdenarActionPerformed);
@@ -75,8 +65,8 @@ public class View extends javax.swing.JFrame {
         tblProdutos.setModel(modelo);
         jScrollPane1.setViewportView(tblProdutos);
 
-        btnRelatório.setText("Gerar relatório");
-        btnRelatório.addActionListener(this::btnRelatórioActionPerformed);
+        btnRelatorio.setText("Gerar relatório");
+        btnRelatorio.addActionListener(this::btnRelatorioActionPerformed);
 
         lblTempo.setText("Tempo");
 
@@ -102,7 +92,7 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbAlgoritimo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbAlgoritmo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbTecnica, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -116,7 +106,7 @@ public class View extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTempo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRelatório)))
+                        .addComponent(btnRelatorio)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -134,7 +124,7 @@ public class View extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbAlgoritimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOrdenar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -146,7 +136,7 @@ public class View extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRelatório)
+                    .addComponent(btnRelatorio)
                     .addComponent(lblTempo))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -154,53 +144,67 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Eventos dos componentes
     private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
-        try {
-            mostrar(controlador.carregar((String) cbArquivo.getSelectedItem()));
-        } catch (Exception e) {
-            erro(e);
-        }
+        controlador.carregar();
     }//GEN-LAST:event_btnCarregarActionPerformed
 
     private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
-        try {
-            mostrar(controlador.exportar("produtos_exportados.txt"));
-        } catch (Exception e) {
-            erro(e);
-        }
+        controlador.exportar();
     }//GEN-LAST:event_btnExportarActionPerformed
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        try {
-            mostrar(controlador.ordenar((String) cbCampo.getSelectedItem(), (String) cbAlgoritimo.getSelectedItem()));
-        } catch (Exception e) {
-            erro(e);
-        }
+        controlador.ordenar();
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try {
-            mostrar(controlador.buscar((String) cbTecnica.getSelectedItem(), txtBusca.getText()));
-        } catch (Exception e) {
-            erro(e);
-        }
+        controlador.buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnRelatórioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatórioActionPerformed
-        try {
-            mostrar(controlador.gerarRelatorio());
-        } catch (Exception e) {
-            erro(e);
-        }
-    }//GEN-LAST:event_btnRelatórioActionPerformed
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        controlador.gerarRelatorio();
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    public void setControlador(ControladorProdutos controlador) {
+        this.controlador = controlador;
+    }
+
+    // Getters
+    public javax.swing.JComboBox<String> getCbArquivo() {
+        return cbArquivo;
+    }
+
+    public javax.swing.JComboBox<String> getCbCampo() {
+        return cbCampo;
+    }
+
+    public javax.swing.JComboBox<String> getCbAlgoritmo() {
+        return cbAlgoritmo;
+    }
+
+    public javax.swing.JComboBox<String> getCbTecnica() {
+        return cbTecnica;
+    }
+
+    public javax.swing.JTextField getTxtBusca() {
+        return txtBusca;
+    }
+
+    public javax.swing.JLabel getLblTempo() {
+        return lblTempo;
+    }
+
+    public ProdutoTableModel getModeloTabela() {
+        return modelo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCarregar;
     private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnOrdenar;
-    private javax.swing.JButton btnRelatório;
-    private javax.swing.JComboBox<String> cbAlgoritimo;
+    private javax.swing.JButton btnRelatorio;
+    private javax.swing.JComboBox<String> cbAlgoritmo;
     private javax.swing.JComboBox<String> cbArquivo;
     private javax.swing.JComboBox<String> cbCampo;
     private javax.swing.JComboBox<String> cbTecnica;

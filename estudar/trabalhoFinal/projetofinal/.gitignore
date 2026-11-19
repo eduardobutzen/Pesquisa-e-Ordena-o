@@ -1,3 +1,5 @@
-build/
-dist/
-nbproject/private/
+target/
+nbactions.xml
+nb-configuration.xml
+produtos_exportados.txt
+nbproject/

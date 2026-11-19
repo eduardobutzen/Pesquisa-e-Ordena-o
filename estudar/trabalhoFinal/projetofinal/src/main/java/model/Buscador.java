@@ -1,14 +1,17 @@
-package avaliaçãofinal.model;
+package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.IntFunction;
 
+// Busca linear, binária e por HashMap
 public class Buscador {
 
+    // Evita que o Java pule as buscas
     private static volatile int resultadoIgnorado;
 
+    // Busca linear: olha um por um
     public static Produto linear(List<Produto> lista, int id) {
         for (Produto p : lista) {
             if (p.getId() == id) {
@@ -18,6 +21,7 @@ public class Buscador {
         return null;
     }
 
+    // Busca binária: divide a lista ao meio
     public static Produto binaria(List<Produto> listaOrdenadaPorId, int id) {
         int ini = 0;
         int fim = listaOrdenadaPorId.size() - 1;
@@ -35,6 +39,7 @@ public class Buscador {
         return null;
     }
 
+    // Monta o HashMap por id
     public static HashMap<Integer, Produto> mapaPorId(List<Produto> lista) {
         HashMap<Integer, Produto> mapa = new HashMap<>();
         for (Produto p : lista) {
@@ -43,6 +48,7 @@ public class Buscador {
         return mapa;
     }
 
+    // Monta o HashMap por categoria
     public static HashMap<String, List<Produto>> mapaPorCategoria(List<Produto> lista) {
         HashMap<String, List<Produto>> mapa = new HashMap<>();
         for (Produto p : lista) {
@@ -51,6 +57,7 @@ public class Buscador {
         return mapa;
     }
 
+    // Mede o tempo médio de uma busca
     public static double tempoMedio(IntFunction<Produto> busca, int[] ids) {
         int soma = 0;
         long melhor = Long.MAX_VALUE;

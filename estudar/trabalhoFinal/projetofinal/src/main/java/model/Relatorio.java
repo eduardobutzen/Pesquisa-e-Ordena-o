@@ -1,4 +1,4 @@
-package avaliaçãofinal.model;
+package model;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+// Gera o relatorio.txt
 public class Relatorio {
 
     public static final long DOIS_MINUTOS = 120_000_000_000L;
@@ -30,6 +31,7 @@ public class Relatorio {
     }
 
     public static void gerar(String saida) throws IOException {
+        // Aquece o Java antes de medir
         for (int i = 0; i < 3; i++) {
             medir(ARQUIVOS[1]);
         }

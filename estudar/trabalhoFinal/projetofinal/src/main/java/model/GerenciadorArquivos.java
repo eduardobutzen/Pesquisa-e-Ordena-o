@@ -1,4 +1,4 @@
-package avaliaçãofinal.model;
+package model;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -7,11 +7,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+// Lê e salva os arquivos
 public class GerenciadorArquivos {
 
     public static ArrayList<Produto> ler(String arquivo) throws IOException {
         List<String> linhas = Files.readAllLines(Path.of(arquivo), StandardCharsets.UTF_8);
         ArrayList<Produto> lista = new ArrayList<>();
+        // Pula o cabeçalho
         for (int i = 1; i < linhas.size(); i++) {
             String[] c = linhas.get(i).split(";");
             if (c.length == 5) {

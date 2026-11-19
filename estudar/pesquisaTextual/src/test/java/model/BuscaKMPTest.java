@@ -39,7 +39,7 @@ class BuscaKMPTest {
         assertTrue(busca.procurar(null, "a", false).isEmpty());
     }
 
-    // Compara o KMP com a força bruta em textos aleatórios
+    // Compara com a força bruta
     @Test
     void mesmoResultadoQueForcaBruta() {
         Random sorteio = new Random(42);
@@ -59,7 +59,7 @@ class BuscaKMPTest {
         return sb.toString();
     }
 
-    // Busca simples, usada para comparar com o KMP
+    // Força bruta
     private static List<Ocorrencia> forcaBruta(String texto, String padrao) {
         List<Ocorrencia> r = new ArrayList<>();
         for (int i = 0; i + padrao.length() <= texto.length(); i++) {
