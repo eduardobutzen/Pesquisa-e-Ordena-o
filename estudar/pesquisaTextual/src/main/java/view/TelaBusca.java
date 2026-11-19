@@ -1,9 +1,8 @@
 package view;
 
-// Tela de busca, criada no editor visual do NetBeans
+// View (MVC): tela criada no editor visual do NetBeans
 public class TelaBusca extends javax.swing.JFrame {
 
-    // Monta os componentes da tela
     public TelaBusca() {
         initComponents();
     }

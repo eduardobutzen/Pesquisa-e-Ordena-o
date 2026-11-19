@@ -15,7 +15,7 @@ import model.BuscaKMP;
 import model.Ocorrencia;
 import view.TelaBusca;
 
-// Liga a tela à busca
+// Controller (MVC): recebe os eventos da tela e chama a busca KMP
 public class ControladorBusca {
 
     private static final Color COR_OCORRENCIA = new Color(255, 236, 130);
@@ -31,7 +31,6 @@ public class ControladorBusca {
     private List<Ocorrencia> ocorrencias = new ArrayList<>();
     private int selecionada = -1;
 
-    // Guarda a tela e a busca e registra os eventos
     public ControladorBusca(TelaBusca tela, BuscaKMP buscador) {
         this.tela = tela;
         this.buscador = buscador;
@@ -39,7 +38,6 @@ public class ControladorBusca {
         refazerBusca(false);
     }
 
-    // Conecta campos e botões às ações
     private void ligarEventos() {
         tela.getTxtBusca().getDocument().addDocumentListener(new AoMudarDocumento(true));
         tela.getTxaTexto().getDocument().addDocumentListener(new AoMudarDocumento(false));
@@ -50,7 +48,6 @@ public class ControladorBusca {
         tela.getTxtBusca().addActionListener(e -> irPara(selecionada + 1));
     }
 
-    // Busca de novo e atualiza a tela
     private void refazerBusca(boolean termoMudou) {
         String texto = tela.getTxaTexto().getText();
         String termo = tela.getTxtBusca().getText();
@@ -58,6 +55,7 @@ public class ControladorBusca {
 
         ocorrencias = buscador.procurar(texto, termo, tela.getChkMaiusculas().isSelected());
 
+        // Termo novo: vai para a 1ª ocorrência. Texto editado: tenta manter a mesma
         if (ocorrencias.isEmpty()) {
             selecionada = -1;
         } else if (termoMudou || anterior < 0) {
@@ -73,19 +71,18 @@ public class ControladorBusca {
         atualizarStatus(termo);
     }
 
-    // Seleciona outra ocorrência, dando a volta nas pontas
     private void irPara(int indice) {
         if (ocorrencias.isEmpty()) {
             return;
         }
         int total = ocorrencias.size();
+        // Depois da última volta para a primeira (e vice-versa)
         selecionada = ((indice % total) + total) % total;
         destacar();
         rolarAte(ocorrencias.get(selecionada));
         atualizarStatus(tela.getTxtBusca().getText());
     }
 
-    // Pinta as ocorrências no texto
     private void destacar() {
         Highlighter marcador = tela.getTxaTexto().getHighlighter();
         marcador.removeAllHighlights();
@@ -99,7 +96,6 @@ public class ControladorBusca {
         }
     }
 
-    // Rola o texto até a ocorrência
     private void rolarAte(Ocorrencia o) {
         JTextArea area = tela.getTxaTexto();
         try {
@@ -112,7 +108,6 @@ public class ControladorBusca {
         }
     }
 
-    // Mostra a mensagem de status e liga/desliga os botões
     private void atualizarStatus(String termo) {
         String mensagem;
         if (termo.isEmpty()) {
@@ -129,7 +124,7 @@ public class ControladorBusca {
         tela.getBtnProxima().setEnabled(temResultado);
     }
 
-    // Refaz a busca quando um campo de texto muda
+    // Refaz a busca sempre que o termo ou o texto muda
     private class AoMudarDocumento implements DocumentListener {
 
         private final boolean ehOTermo;

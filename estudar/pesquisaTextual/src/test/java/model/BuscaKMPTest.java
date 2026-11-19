@@ -14,28 +14,24 @@ class BuscaKMPTest {
 
     private final BuscaKMP busca = new BuscaKMP();
 
-    // Confere a tabela de falha de "ababaca"
     @Test
     void tabelaDeFalhaDoExemploClassico() {
         assertArrayEquals(new int[]{0, 0, 1, 2, 3, 0, 1},
                 BuscaKMP.tabelaDeFalha("ababaca".toCharArray()));
     }
 
-    // Confere que ocorrências sobrepostas são encontradas
     @Test
     void encontraOcorrenciasSobrepostas() {
         List<Ocorrencia> r = busca.procurar("ararara", "arara", false);
         assertEquals(List.of(new Ocorrencia(0, 5), new Ocorrencia(2, 7)), r);
     }
 
-    // Confere a opção de diferenciar maiúsculas
     @Test
     void ignoraMaiusculasQuandoPedido() {
         assertEquals(3, busca.procurar("Casa casa CASA", "casa", false).size());
         assertEquals(1, busca.procurar("Casa casa CASA", "casa", true).size());
     }
 
-    // Confere entradas vazias ou inválidas
     @Test
     void casosVazios() {
         assertTrue(busca.procurar("abc", "", false).isEmpty());
@@ -55,7 +51,6 @@ class BuscaKMPTest {
         }
     }
 
-    // Gera uma string aleatória com as letras a e b
     private static String aleatoria(Random sorteio, int tamanho) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tamanho; i++) {

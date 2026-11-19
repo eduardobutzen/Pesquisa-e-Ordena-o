@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 import model.BuscaKMP;
 import view.TelaBusca;
 
-// Ponto de entrada do programa
+// Ponto de entrada: cria a View e o Model e liga os dois pelo Controller (MVC)
 public class App {
 
     private static final String TEXTO_EXEMPLO =
@@ -15,7 +15,6 @@ public class App {
             + "\"ararara\": o algoritmo KMP também encontra ocorrências que se sobrepõem.\n\n"
             + "Marque \"Diferenciar maiúsculas\" para que Arara e arara deixem de ser iguais.";
 
-    // Cria a tela, liga o controlador e abre a janela
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             TelaBusca tela = new TelaBusca();

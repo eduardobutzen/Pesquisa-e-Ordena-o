@@ -17,14 +17,17 @@ public class BuscaKMP {
         char[] p = preparar(padrao, diferenciarMaiusculas);
         int[] falha = tabelaDeFalha(p);
 
+        // casados = quantas letras do padrão já batem até a posição i
         int casados = 0;
         for (int i = 0; i < t.length; i++) {
+            // Deu diferença: volta só no padrão, pela tabela de falha (o i nunca volta)
             while (casados > 0 && t[i] != p[casados]) {
                 casados = falha[casados - 1];
             }
             if (t[i] == p[casados]) {
                 casados++;
             }
+            // Achou: continua de falha[] para também pegar ocorrências sobrepostas
             if (casados == p.length) {
                 encontradas.add(new Ocorrencia(i - p.length + 1, i + 1));
                 casados = falha[casados - 1];
@@ -33,7 +36,7 @@ public class BuscaKMP {
         return encontradas;
     }
 
-    // Monta a tabela de falha do padrão
+    // falha[i] = tamanho do maior prefixo do padrão que também é sufixo de padrao[0..i]
     public static int[] tabelaDeFalha(char[] padrao) {
         int[] falha = new int[padrao.length];
         int k = 0;
@@ -49,7 +52,7 @@ public class BuscaKMP {
         return falha;
     }
 
-    // Converte para char[] e, se pedido, deixa tudo minúsculo
+    // Minúsculas caractere por caractere para as posições baterem com o texto da tela
     private char[] preparar(String s, boolean diferenciarMaiusculas) {
         char[] c = s.toCharArray();
         if (!diferenciarMaiusculas) {
