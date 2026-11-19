@@ -1,7 +1,11 @@
 package view;
 
+import controller.ControladorBusca;
+
 // View (MVC): tela criada no editor visual do NetBeans
 public class TelaBusca extends javax.swing.JFrame {
+
+    private ControladorBusca controlador;
 
     public TelaBusca() {
         initComponents();
@@ -25,16 +29,47 @@ public class TelaBusca extends javax.swing.JFrame {
 
         lblBuscar.setText("Buscar:");
 
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaActionPerformed(evt);
+            }
+        });
+        txtBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscaKeyReleased(evt);
+            }
+        });
+
         chkMaiusculas.setText("Diferenciar maiúsculas");
+        chkMaiusculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMaiusculasActionPerformed(evt);
+            }
+        });
 
         btnAnterior.setText("Anterior");
+        btnAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriorActionPerformed(evt);
+            }
+        });
 
         btnProxima.setText("Próxima");
+        btnProxima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximaActionPerformed(evt);
+            }
+        });
 
         txaTexto.setColumns(20);
         txaTexto.setLineWrap(true);
         txaTexto.setRows(5);
         txaTexto.setWrapStyleWord(true);
+        txaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txaTextoKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(txaTexto);
 
         lblStatus.setText("Digite algo no campo de busca.");
@@ -79,6 +114,35 @@ public class TelaBusca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    // Eventos dos componentes: cada um só avisa o controlador
+    private void txtBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyReleased
+        controlador.termoDigitado();
+    }//GEN-LAST:event_txtBuscaKeyReleased
+
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
+        controlador.proxima();
+    }//GEN-LAST:event_txtBuscaActionPerformed
+
+    private void txaTextoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txaTextoKeyReleased
+        controlador.textoEditado();
+    }//GEN-LAST:event_txaTextoKeyReleased
+
+    private void chkMaiusculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaiusculasActionPerformed
+        controlador.maiusculasAlterado();
+    }//GEN-LAST:event_chkMaiusculasActionPerformed
+
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
+        controlador.anterior();
+    }//GEN-LAST:event_btnAnteriorActionPerformed
+
+    private void btnProximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximaActionPerformed
+        controlador.proxima();
+    }//GEN-LAST:event_btnProximaActionPerformed
+
+    public void setControlador(ControladorBusca controlador) {
+        this.controlador = controlador;
+    }
 
     // Getters usados pelo controlador
     public javax.swing.JTextField getTxtBusca() {

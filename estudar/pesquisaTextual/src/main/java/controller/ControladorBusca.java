@@ -5,9 +5,6 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
@@ -30,28 +27,47 @@ public class ControladorBusca {
 
     private List<Ocorrencia> ocorrencias = new ArrayList<>();
     private int selecionada = -1;
+    private String ultimoTermo = "";
+    private String ultimoTexto = "";
 
     public ControladorBusca(TelaBusca tela, BuscaKMP buscador) {
         this.tela = tela;
         this.buscador = buscador;
-        ligarEventos();
+        tela.setControlador(this);
         refazerBusca(false);
     }
 
-    private void ligarEventos() {
-        tela.getTxtBusca().getDocument().addDocumentListener(new AoMudarDocumento(true));
-        tela.getTxaTexto().getDocument().addDocumentListener(new AoMudarDocumento(false));
+    // Chamados pelos eventos da tela. Teclas que não mudam o texto (setas, Enter) são ignoradas
+    public void termoDigitado() {
+        if (!tela.getTxtBusca().getText().equals(ultimoTermo)) {
+            refazerBusca(true);
+        }
+    }
 
-        tela.getChkMaiusculas().addActionListener(e -> refazerBusca(true));
-        tela.getBtnProxima().addActionListener(e -> irPara(selecionada + 1));
-        tela.getBtnAnterior().addActionListener(e -> irPara(selecionada - 1));
-        tela.getTxtBusca().addActionListener(e -> irPara(selecionada + 1));
+    public void textoEditado() {
+        if (!tela.getTxaTexto().getText().equals(ultimoTexto)) {
+            refazerBusca(false);
+        }
+    }
+
+    public void maiusculasAlterado() {
+        refazerBusca(true);
+    }
+
+    public void proxima() {
+        irPara(selecionada + 1);
+    }
+
+    public void anterior() {
+        irPara(selecionada - 1);
     }
 
     private void refazerBusca(boolean termoMudou) {
         String texto = tela.getTxaTexto().getText();
         String termo = tela.getTxtBusca().getText();
         int anterior = selecionada;
+        ultimoTexto = texto;
+        ultimoTermo = termo;
 
         ocorrencias = buscador.procurar(texto, termo, tela.getChkMaiusculas().isSelected());
 
@@ -122,29 +138,5 @@ public class ControladorBusca {
         boolean temResultado = !ocorrencias.isEmpty();
         tela.getBtnAnterior().setEnabled(temResultado);
         tela.getBtnProxima().setEnabled(temResultado);
-    }
-
-    // Refaz a busca sempre que o termo ou o texto muda
-    private class AoMudarDocumento implements DocumentListener {
-
-        private final boolean ehOTermo;
-
-        AoMudarDocumento(boolean ehOTermo) {
-            this.ehOTermo = ehOTermo;
-        }
-
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            SwingUtilities.invokeLater(() -> refazerBusca(ehOTermo));
-        }
-
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            SwingUtilities.invokeLater(() -> refazerBusca(ehOTermo));
-        }
-
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-        }
     }
 }
